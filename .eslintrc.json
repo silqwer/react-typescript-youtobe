@@ -7,6 +7,9 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:import/recommended",
     "standard-with-typescript"
   ],
   "overrides": [],
@@ -28,15 +31,29 @@
     "no-duplicate-imports": "error",
     "semi": [1, "always"],
     "@typescript-eslint/dot-notation": "error",
-    "import/no-duplicates": "error",
-    "@typescript-eslint/semi": ["error", "always"]
+    "import/no-duplicates": ["error", { "considerQueryString": false }],
+    "@typescript-eslint/semi": ["error", "always"],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "never"
+      }
+    ],
+    "import/no-unresolved": "off",
+    "import/export": "off"
   },
   "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
-    },
     "import/resolver": {
-      "typescript": {}
-    }
+      "node": {},
+      "typescript": {
+        "directory": "./src"
+      }
+    },
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] }
   }
 }

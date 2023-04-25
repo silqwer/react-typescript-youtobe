@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import NotFound from '../pages/NotFound';
-import Videos from '../pages/Videos';
-import VideoDetail from '../pages/VideoDetail';
 import App from '../App';
+import NotFound from '../pages/NotFound';
+import VideoDetail from '../pages/VideoDetail';
+import Videos from '../pages/Videos';
 
 const routes = createBrowserRouter([
   {
