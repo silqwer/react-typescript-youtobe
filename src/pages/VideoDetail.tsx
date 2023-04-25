@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VideoDetail = () => {
+const VideoDetail = (): JSX.Element => {
   return <div>VideoDetail</div>;
 };
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BsYoutube, BsSearch } from 'react-icons/bs';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
 const SearchHeader = (): JSX.Element => {
   const [text, setText] = useState('');
   const navigate = useNavigate();

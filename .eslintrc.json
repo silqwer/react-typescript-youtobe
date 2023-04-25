@@ -15,23 +15,28 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "react-hooks", "import", "@typescript-eslint", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "spaced-comment": "error",
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
-    "semi": [1, "always"]
+    "semi": [1, "always"],
+    "@typescript-eslint/dot-notation": "error",
+    "import/no-duplicates": "error",
+    "@typescript-eslint/semi": ["error", "always"]
   },
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
     },
     "import/resolver": {
-      "typescript": "./tsconfig.json"
+      "typescript": {}
     }
   }
 }
