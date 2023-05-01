@@ -21,9 +21,21 @@ interface Snippet {
   publishTime: string;
 }
 
+interface SearchVideoId {
+  kind: string;
+  videoId: string;
+}
+
 export interface Video {
   kind: string;
   etag: string;
   id: string;
+  snippet: Snippet;
+}
+
+export interface SearchVideo {
+  kind: string;
+  etag: string;
+  id: SearchVideoId;
   snippet: Snippet;
 }

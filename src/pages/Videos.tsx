@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React from 'react';
 import { useParams } from 'react-router-dom';
+import FakeYoutube from '../api/fakeYoutube';
 import type { Video } from '../types/Videos';
 
 const Videos = (): JSX.Element => {
@@ -11,10 +10,10 @@ const Videos = (): JSX.Element => {
     isError,
     data: videos
   } = useQuery<Video[]>(['videos', keyword], async () => {
-    const fileName = keyword === undefined ? 'popular' : ' search';
-    return await axios(`/videos/${fileName}.json`).then((res) => res.data.items);
+    const youtube = new FakeYoutube();
+    return await youtube.search(keyword);
   });
-
+  console.log('videos:', videos);
   return (
     <>
       <div>Videos:{keyword !== undefined ? `🔎${keyword}` : '🔥'}</div>
