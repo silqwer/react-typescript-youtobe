@@ -6,11 +6,11 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
     "plugin:import/recommended",
-    "standard-with-typescript"
+    "standard-with-typescript",
+    "plugin:prettier/recommended"
   ],
   "overrides": [],
   "parserOptions": {
