@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import FakeYoutube from '../api/fakeYoutube';
+import Youtube from '../api/youtube';
 import type { Video } from '../types/Videos';
 
 const Videos = (): JSX.Element => {
@@ -10,10 +10,9 @@ const Videos = (): JSX.Element => {
     isError,
     data: videos
   } = useQuery<Video[]>(['videos', keyword], async () => {
-    const youtube = new FakeYoutube();
+    const youtube = new Youtube();
     return await youtube.search(keyword);
   });
-  console.log('videos:', videos);
   return (
     <>
       <div>Videos:{keyword !== undefined ? `🔎${keyword}` : '🔥'}</div>
