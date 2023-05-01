@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import type { Video } from '../types/Videos';
@@ -11,9 +12,7 @@ const Videos = (): JSX.Element => {
     data: videos
   } = useQuery<Video[]>(['videos', keyword], async () => {
     const fileName = keyword === undefined ? 'popular' : ' search';
-    return await fetch(`/videos/${fileName}.json`)
-      .then(async (res) => await res.json())
-      .then((data) => data.items);
+    return await axios(`/videos/${fileName}.json`).then((res) => res.data.items);
   });
 
   return (
