@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import Youtube from '../api/youtube';
+import { useYoutubeApi } from '../context/YoutubeApiContext';
 import type { Video } from '../types/Videos';
 
 const Videos = (): JSX.Element => {
   const { keyword } = useParams();
+  const { youtube } = useYoutubeApi();
   const {
     isLoading,
     isError,
     data: videos
   } = useQuery<Video[]>(['videos', keyword], async () => {
-    const youtube = new Youtube();
     return await youtube.search(keyword);
   });
   return (
