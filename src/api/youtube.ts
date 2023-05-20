@@ -1,42 +1,33 @@
-import axios, { type AxiosInstance } from 'axios';
-import { type SearchVideo, type Video } from '../types/Videos';
+import { type Video } from '../types/Videos';
+import type FakeYoutubeClient from './fakeYoutubeClient';
+import type YoutubeClient from './youtubeClient';
 
 export default class Youtube {
-  httpClient: AxiosInstance;
+  httpClient: FakeYoutubeClient | YoutubeClient;
 
-  constructor() {
-    this.httpClient = axios.create({
-      baseURL: 'https://www.googleapis.com/youtube/v3',
+  constructor(apiClient: FakeYoutubeClient | YoutubeClient) {
+    this.httpClient = apiClient;
+  }
+
+  private async mostPopular(): Promise<Video[]> {
+    return await this.httpClient.videos({
       params: {
-        key: process.env.REACT_APP_YOUTUBE_API_KEY
+        part: 'snippet',
+        maxResults: 25,
+        chart: 'mostPopular'
       }
     });
   }
 
-  private async mostPopular(): Promise<Video[]> {
-    return await this.httpClient
-      .get('videos', {
-        params: {
-          part: 'snippet',
-          maxResults: 25,
-          chart: 'mostPopular'
-        }
-      })
-      .then((res) => res.data.items);
-  }
-
   private async searchByKeyword(keyword: string): Promise<Video[]> {
-    return await this.httpClient
-      .get('search', {
-        params: {
-          part: 'snippet',
-          maxResults: 25,
-          type: 'video',
-          q: keyword
-        }
-      })
-      .then((res) => res.data.items)
-      .then((items) => items.map((item: SearchVideo) => ({ ...item, id: item.id.videoId })));
+    return await this.httpClient.search({
+      params: {
+        part: 'snippet',
+        maxResults: 25,
+        type: 'video',
+        q: keyword
+      }
+    });
   }
 
   async search(keyword: string | undefined): Promise<Video[]> {
