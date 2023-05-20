@@ -77,6 +77,8 @@ Mock Data를 사용하여 Api call 횟수를 줄인다.
 
 - axios
 
+- timeago.js
+
 ### .env 구성
 
 - REACT_APP_YOUTUBE_API_KEY=[YOUR_ACCESS_TOKEN]

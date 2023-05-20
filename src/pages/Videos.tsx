@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import VideoCard from '../components/VideoCard';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import type { Video } from '../types/Videos';
 
@@ -21,7 +22,7 @@ const Videos = (): JSX.Element => {
       {videos !== undefined && (
         <ul>
           {videos.map((video: Video) => (
-            <div key={video.id}>{video.snippet.title}</div>
+            <VideoCard key={video.id} video={video} />
           ))}
         </ul>
       )}
