@@ -33,4 +33,23 @@ export default class Youtube {
   async search(keyword: string | undefined): Promise<Video[]> {
     return keyword === undefined ? await this.mostPopular() : await this.searchByKeyword(keyword);
   }
+
+  async channelImageURL(id: string): Promise<string> {
+    return await this.httpClient
+      .channels({
+        params: { part: 'snippet', id }
+      })
+      .then((channels) => channels[0].snippet.thumbnails.default.url);
+  }
+
+  async relatedVideos(id: string): Promise<Video[]> {
+    return await this.httpClient.search({
+      params: {
+        part: 'snippet',
+        maxResults: 25,
+        type: 'video',
+        relatedToVideoId: id
+      }
+    });
+  }
 }

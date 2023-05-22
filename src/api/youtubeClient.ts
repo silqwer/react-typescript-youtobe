@@ -1,4 +1,5 @@
 import axios, { type AxiosRequestConfig } from 'axios';
+import { type ChannelParam, type Channel } from '../types/Channels';
 import { type VideosParam, type SearchParam, type Video, type SearchVideo } from '../types/Videos';
 
 export default class YoutubeClient {
@@ -22,5 +23,13 @@ export default class YoutubeClient {
 
   async videos(params: AxiosRequestConfig<VideosParam>): Promise<Video[]> {
     return await this.httpClient.get('videos', params).then((res) => res.data.items);
+  }
+
+  async channels(params: AxiosRequestConfig<ChannelParam>): Promise<Channel[]> {
+    return await this.httpClient.get('channels', params).then((res) => res.data.items);
+  }
+
+  async channelImageURL(params: AxiosRequestConfig<SearchParam>): Promise<string> {
+    return await this.httpClient.get('videos').then((res) => res.data.item[0].snippet.thumbnails.default.url);
   }
 }

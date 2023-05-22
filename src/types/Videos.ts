@@ -45,6 +45,7 @@ export interface SearchParam {
   maxResults: number;
   type: string;
   q: string;
+  relatedToVideoId?: string;
 }
 
 export interface VideosParam {
