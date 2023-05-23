@@ -25,7 +25,7 @@ const RelatedVideos = ({ id }: Props): JSX.Element => {
       {videos !== undefined && (
         <ul>
           {videos.map((video: Video) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard key={video.id} video={video} type='list' />
           ))}
         </ul>
       )}

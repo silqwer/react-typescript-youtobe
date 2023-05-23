@@ -20,9 +20,9 @@ const ChannelInfo = ({ id, name }: Props): JSX.Element => {
   }
 
   return (
-    <div>
-      {url !== undefined && <img src={url} alt={name} />}
-      <p>{name}</p>
+    <div className='flex items-center my-4 mb-8'>
+      {url !== undefined && <img className='w-10 h-10 rounded-full' src={url} alt={name} />}
+      <p className='ml-2 text-lg font-medium'>{name}</p>
     </div>
   );
 };
