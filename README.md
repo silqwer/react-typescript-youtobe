@@ -82,3 +82,7 @@ Mock Data를 사용하여 Api call 횟수를 줄인다.
 ### .env 구성
 
 - REACT_APP_YOUTUBE_API_KEY=[YOUR_ACCESS_TOKEN]
+
+### 사이트
+
+- https://stately-brioche-9b9be1.netlify.app
