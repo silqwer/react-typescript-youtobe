@@ -13,7 +13,7 @@ const VideoDetail = (): JSX.Element => {
   return (
     <section className='flex flex-col lg:flex-row'>
       <article className='basis-4/6'>
-        <iframe id='player' width='100%' height='640' src={`http://www.youtube.com/embed/${videoId}`}></iframe>
+        <iframe id='player' width='100%' height='640' src={`https://www.youtube.com/embed/${videoId}`}></iframe>
         <div>
           <h2 className='text-xl font-bold'>{title}</h2>
           <ChannelInfo id={channelId} name={channelTitle} />
