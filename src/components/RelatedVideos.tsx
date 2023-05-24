@@ -10,7 +10,11 @@ interface Props {
 
 const RelatedVideos = ({ id }: Props): JSX.Element => {
   const { youtube } = useYoutubeApi();
-  const { isError, isLoading, data: videos } = useQuery(['related', id], async () => await youtube.relatedVideos(id));
+  const {
+    isError,
+    isLoading,
+    data: videos
+  } = useQuery(['related', id], async () => await youtube.relatedVideos(id), { staleTime: 1000 * 60 * 5 });
 
   if (isError) {
     return <div>Something is Wrong!</div>;
