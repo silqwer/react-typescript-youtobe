@@ -1,43 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { type Video } from '../../types/Videos';
+import { fakeVideo as video } from '../../tests/videos';
 import { formatAgo } from '../../utils/date';
 import VideoCard from '../VideoCard';
 
 describe('VideoCard', () => {
-  const video: Video = {
-    id: '1',
-    kind: 'kind',
-    etag: 'etag',
-    snippet: {
-      title: 'title',
-      channelId: '1',
-      channelTitle: 'cannelTitle',
-      publishedAt: new Date().toDateString(),
-      thumbnails: {
-        default: {
-          url: 'http://image/',
-          width: 100,
-          height: 100
-        },
-        medium: {
-          url: 'http://image/',
-          width: 100,
-          height: 100
-        },
-        high: {
-          url: 'http://image/',
-          width: 100,
-          height: 100
-        }
-      },
-      liveBroadcastContent: 'liveBroadcastContent',
-      description: 'description',
-      publishTime: 'publishTime'
-    }
-  };
-
   const { title, channelTitle, publishedAt, thumbnails } = video.snippet;
 
   it('renders video item', () => {
