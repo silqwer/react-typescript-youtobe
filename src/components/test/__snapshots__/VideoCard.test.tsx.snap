@@ -18,7 +18,7 @@ exports[`VideoCard renders grid type correctly 1`] = `
       cannelTitle
     </p>
     <p>
-      13시간 전
+      14시간 전
     </p>
   </div>
 </li>
@@ -42,7 +42,7 @@ exports[`VideoCard renders list type correctly 1`] = `
       cannelTitle
     </p>
     <p>
-      13시간 전
+      14시간 전
     </p>
   </div>
 </li>
