@@ -30,7 +30,7 @@ const createTestQueryClient = () => {
 export const withAllContexts = (children, youtube) => {
   const testClient = createTestQueryClient();
   return (
-    <YoutubeApiContext.Provider value={youtube}>
+    <YoutubeApiContext.Provider value={{ youtube }}>
       <QueryClientProvider client={testClient}>{children}</QueryClientProvider>
     </YoutubeApiContext.Provider>
   );

@@ -13,8 +13,9 @@ const Videos = (): JSX.Element => {
     data: videos
   } = useQuery<Video[]>(
     ['videos', keyword],
-    async () => {
-      return await youtube.search(keyword);
+    () => {
+      console.log(youtube);
+      return youtube.search(keyword);
     },
     { staleTime: 1000 * 60 * 1 }
   );
