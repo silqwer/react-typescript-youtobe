@@ -1,12 +1,16 @@
 import { createContext, useContext } from 'react';
 import type Youtube from '../api/youtube';
 
-export const YoutubeApiContext = createContext<{ youtube: Youtube } | undefined>(undefined);
+interface YoutubeApiContextType {
+  youtube: Youtube;
+}
 
-export const useYoutubeApi = (): { youtube: Youtube } => {
+export const YoutubeApiContext = createContext<YoutubeApiContextType | undefined>(undefined);
+
+export function useYoutubeApi(): YoutubeApiContextType {
   const context = useContext(YoutubeApiContext);
-  if (context === undefined) {
-    throw new Error('useYoutubeContext must be within Youtube Provider');
+  if (context == null) {
+    throw new Error('useYoutubeApi must be within YoutubeApiProvider');
   }
   return context;
-};
+}
