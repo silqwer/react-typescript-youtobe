@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import type Youtube from '../api/youtube';
 
-interface YoutubeApiContextType {
+export interface YoutubeApiContextType {
   youtube: Youtube;
 }
 

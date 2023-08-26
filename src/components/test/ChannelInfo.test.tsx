@@ -1,15 +1,16 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Route } from 'react-router-dom';
-import { withAllContexts, withRouter } from '../../tests/utils';
+import { withAllContexts, withRouter } from '../../tests/useUtils';
 import ChannelInfo from '../ChannelInfo';
-
-const renderChannelInfo = (): any => {
-  return render(withAllContexts(withRouter(<Route path='/' element={<ChannelInfo id='id' name='channel' />} />)));
-};
 
 describe('ChannelInfo', () => {
   const fakeYoutube = {
     channelImageURL: jest.fn()
+  };
+  const renderChannelInfo = (): any => {
+    return render(
+      withAllContexts(withRouter(<Route path='/' element={<ChannelInfo id='id' name='channel' />} />), fakeYoutube)
+    );
   };
 
   afterEach(() => fakeYoutube.channelImageURL.mockReset());

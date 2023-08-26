@@ -1,6 +1,6 @@
-import { render, waitForElementToBeRemoved, screen } from '@testing-library/react';
+import { render, waitFor, waitForElementToBeRemoved, screen } from '@testing-library/react';
 import { Route } from 'react-router-dom';
-import { withAllContexts, withRouter } from '../../tests/utils';
+import { withAllContexts, withRouter } from '../../tests/useUtils';
 import { fakeVideos } from '../../tests/videos';
 import RelatedVideos from '../RelatedVideos';
 

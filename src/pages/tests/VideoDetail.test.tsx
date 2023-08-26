@@ -3,17 +3,20 @@ import { screen, render } from '@testing-library/react';
 import { Route } from 'react-router-dom';
 import ChannelInfo from '../../components/ChannelInfo';
 import RelatedVideos from '../../components/RelatedVideos';
-import { withRouter } from '../../tests/utils';
+import { withRouter } from '../../tests/useUtils';
 import { fakeVideo } from '../../tests/videos';
 import VideoDetail from '../VideoDetail';
 
 jest.mock('../../components/ChannelInfo');
 jest.mock('../../components/RelatedVideos');
 
+const FakeChannelInfo = ChannelInfo as jest.MockedFunction<typeof ChannelInfo>;
+const FakeRelatedVideos = RelatedVideos as jest.MockedFunction<typeof RelatedVideos>;
+
 describe('VideoDetail', () => {
   afterEach(() => {
-    ChannelInfo.mockReset();
-    RelatedVideos.mockReset();
+    FakeChannelInfo.mockReset();
+    FakeRelatedVideos.mockReset();
   });
 
   it('renders video item details', () => {
@@ -27,8 +30,8 @@ describe('VideoDetail', () => {
 
     const { title, channelId, channelTitle } = fakeVideo.snippet;
     expect(screen.getByTitle(title)).toBeInTheDocument();
-    expect(RelatedVideos.mock.calls[0][0]).toStrictEqual({ id: fakeVideo.id });
-    expect(ChannelInfo.mock.calls[0][0]).toStrictEqual({
+    expect(FakeRelatedVideos.mock.calls[0][0]).toStrictEqual({ id: fakeVideo.id });
+    expect(FakeChannelInfo.mock.calls[0][0]).toStrictEqual({
       id: channelId,
       name: channelTitle
     });

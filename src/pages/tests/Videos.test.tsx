@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { type RenderResult, render, screen, waitFor } from '@testing-library/react';
 import { Route } from 'react-router-dom';
-import { withRouter, withAllContexts } from '../../tests/utils';
+import { withRouter, withAllContexts } from '../../tests/useUtils';
 import { fakeVideo, fakeVideos } from '../../tests/videos';
 import Videos from '../Videos';
 
@@ -67,7 +67,9 @@ describe('Videos component', () => {
           </>,
           path
         ),
-        fakeYoutube
+        {
+          youtube: fakeYoutube
+        }
       )
     );
   }
